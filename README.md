@@ -40,42 +40,56 @@ RegisterNumber:  212222240077
 */
 ### half subtractor:
 ```
-module halfsub(a,b,diff,borrow);
-input a,b;
-output diff,borrow;
+module Subtractor(A,B,Diff,Borrow);
+input A,B;
+output Diff,Borrow;
 wire x;
-xor(diff,a,b);
-not(x,a);
-and(borrow,x,b);
+xor (Diff, A,B);
+not(x,A);
+and(Borrow,x,B);
 endmodule
 ```
 ### FULL SUBTRACTOR:
 ```
-module fullsub(a,b,c,diff,borrow);
-input a,b,c;
-output borrow,diff;
-wire an,q,r,s,t,cn,u;
-not(an,a);
-not(cn,c);
-xor(q,a,b);
-xor(diff,q,c);
-and(s,a,b);
-and(t,q,cn);
-or(borrow,s,t);
-endmodule 
+module Subtractor(A,B,C,Diff,Borrow);
+input A,B,C;
+output Diff,Borrow;
+wire p;
+assign Diff = ((A^B)^C);
+not(p,A);
+assign Borrow = ((p&B)|(p&C)|(B&C));
+endmodule
 ```
 ## Output:
 
 ## Truthtable
+### half subtractor:
+
+![img](https://user-images.githubusercontent.com/118679646/231669731-56fac0bf-6911-4cae-b10b-1a9a346606ea.png)
+### FULL SUBTRACTOR:
+
+![img](https://user-images.githubusercontent.com/118679646/231669288-778c1e73-b148-48c7-9ff1-8c336e376bc3.png)
 
 
 
 ##  RTL realization
-![img](https://github.com/praveenst13/Implementation-of-Half-subtractor-and-Full-subtractor-circuit/blob/main/rtl.png)
+### half subtractor:
+
+![img](https://user-images.githubusercontent.com/118679646/231664873-90b9e009-9f1f-4b90-9327-15d52026c3d6.png)
+
+### FULL SUBTRACTOR:
+
+![img](https://user-images.githubusercontent.com/118679646/231667252-43afb9e0-d998-4f3b-9970-d8d40b58a27e.png)
 
 
 ## Timing diagram 
-![img](https://github.com/praveenst13/Implementation-of-Half-subtractor-and-Full-subtractor-circuit/blob/main/tim.png)
+### half subtractor:
+
+![img](https://user-images.githubusercontent.com/118679646/231666975-ba0f6b2b-bfb9-4aa7-8876-67e4a050f6e9.png)
+
+### FULL SUBTRACTOR:
+
+![img](https://user-images.githubusercontent.com/118679646/231667875-4389eff8-e861-4c7e-ac98-74c19fb80929.png)
 
 
 ## Result:
